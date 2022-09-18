@@ -2,17 +2,13 @@
 
 ## **Steps to generate new GPG keys for GitHub:**
 
-1. First, make sure you have the GPG CLI installed. This may be included along with a GitBash installation, on native Linux distros, or through WSL. 
+1. First, make sure you have the GPG CLI installed. You can check installation by running `gpg --version` in your CLI (i.e., GitBash). This may be included along with a GitBash installation, on native Linux distros, or through WSL. 
 
     CLI tools for GPG can also be downloaded directly from [GnuPG](https://www.gnupg.org/download/). If you use this options it's best to verify the integrity of the download with the provided signatures.
 
 2. Now you can generate a new GPG key pair. There's also pretty good [GitHub documentation](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key#generating-a-gpg-key) on these steps which note some other requirements such as needing to run version `2.1.17` or later. The below steps assume you meet those requirements.
 
-    Run `gpg --full-generate-key` to start the interactive process to generate a new GPG key pair.
-
-    > Note that RSA key type is required.
-
-    Next prompts:
+    Run `gpg --full-generate-key` to start the interactive process to generate a new GPG key pair. Initial prompts:
 
     ```
     Please select what kind of key you want:
@@ -23,14 +19,14 @@
       (14) Existing key from card
     ```
     
-    Either push `Enter` as this uses the default, or type in `1` and `Enter`. Both result in choosing the RSA     key type. Next prompts:
+    Either push `Enter` as this uses the default, or type in `1` and `Enter`. Both result in choosing the RSA key type (which is required by GitHub). Next prompts:
     
     ```
     RSA keys may be between 1024 and 4096 bits long.
     What keysize do you want? (3072)
     ```
 
-    For the RSA key length, type in `4096` for the strongest key. GitHub also notes a requirement that the key     must be at least `4096` bits. Next prompts:
+    For the RSA key length, type in `4096` for the strongest key. GitHub also notes a requirement that the key must be at least `4096` bits. Next prompts:
     
     ```
     Requested keysize is 4096 bits
@@ -43,20 +39,20 @@
     Key is valid for? (0)
     ```
     
-    You can optionally set an expiration date here or use the default or no expiration. Keys can have their     expiration dates updated later so you don't have to go through the entire process of generating new keys     when the key expires.
-    
-    Next prompts:
+    You can optionally set an expiration date here or use the default or no expiration. Keys can have their expiration dates updated later so you don't have to go through the entire process of generating new keys when the key expires. Next prompts:
     
     ```
     Is this correct? (y/N)
     ```
     
-    Simply confirm the choices up to this point are correct after reviewing them. You'll then be presented with     user ID inputs:
+    Simply confirm the choices up to this point are correct after reviewing them. You'll then be presented with user ID inputs:
     - `Real name`: Simply type in use first/last name (i.e, "John Doe").
-    - `Email address`: Make sure that you use a verified email account associated with your GitHub account! For     privacy reasonings, you can also use the `no-reply` email address on your account if you have opted to keep     your email address private. Failure to use a verified email account here may result in the verification not     working correctly on GitHub.
-    - `Comment`: You can optionally put something here which can be seen later through `gpg` commands which     could be helpful if you have multiple GPG keys. Or you can leave this blank.
+    - `Email address`: Make sure that you use a verified email account associated with your GitHub account! For privacy reasonings, you can also use the `no-reply` email address on your account if you have opted to keep     your email address private. Failure to use a verified email account here may result in the verification not working correctly on GitHub.
+    - `Comment`: You can optionally put something here which can be seen later through `gpg` commands which could be helpful if you have multiple GPG keys. Or you can leave this blank.
     
-    You'll then need to confirm via `O` for `(O)kay` and you want to proceed. Next you'll need to enter a     passprhase and confirm that passphrase. Once this is complete the key will start generating and it can be     recommendated to improve entropy to move you mouse around or type on the keyboard.gpg
+    <br/>
+    
+    You'll then need to confirm via `O` for `(O)kay` and you want to proceed. Next you'll need to enter a passprhase and confirm that passphrase. Once this is complete the key will start generating and it can be     recommendated to improve entropy to move you mouse around or type on the keyboard.gpg
 
 ## **Fetching key information and importing into GitHub account:**
 
@@ -65,6 +61,10 @@
 2. Fetch the GPG key ID. See [step 11 in the GitHub docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key#generating-a-gpg-key) for where the key is displayed in the list keys output.
 
 3. Run the `gpg --armor --export <ENTER_GPG_KEY_ID>` command to get the GPG public key block.
+    - `--armor`: ASCII armored output.
+    - `--export`: Exports keys.
+
+    A public key block should now be displayed.
 
 4. Copy the text displayed between `-----BEGIN PGP PUBLIC KEY BLOCK-----` and `-----END PGP PUBLIC KEY BLOCK-----`. This should really just be the whole output anyways.
 
