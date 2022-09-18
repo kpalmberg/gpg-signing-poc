@@ -26,7 +26,7 @@
     What keysize do you want? (3072)
     ```
 
-    For the RSA key length, type in `4096` for the strongest key. GitHub also notes a requirement that the key     must be at least `4096` bits. Next prompts:
+    For the RSA key length, type in `4096` for the strongest key. GitHub also notes a requirement that the key must be at least `4096` bits. Next prompts:
     
     ```
     Requested keysize is 4096 bits
@@ -45,14 +45,14 @@
     Is this correct? (y/N)
     ```
     
-    Simply confirm the choices up to this point are correct after reviewing them. You'll then be presented with     user ID inputs:
+    Simply confirm the choices up to this point are correct after reviewing them. You'll then be presented with user ID inputs:
     - `Real name`: Simply type in use first/last name (i.e, "John Doe").
-    - `Email address`: Make sure that you use a verified email account associated with your GitHub account! For     privacy reasonings, you can also use the `no-reply` email address on your account if you have opted to keep     your email address private. Failure to use a verified email account here may result in the verification not     working correctly on GitHub.
-    - `Comment`: You can optionally put something here which can be seen later through `gpg` commands which     could be helpful if you have multiple GPG keys. Or you can leave this blank.
+    - `Email address`: Make sure that you use a verified email account associated with your GitHub account! For privacy reasonings, you can also use the `no-reply` email address on your account if you have opted to keep     your email address private. Failure to use a verified email account here may result in the verification not working correctly on GitHub.
+    - `Comment`: You can optionally put something here which can be seen later through `gpg` commands which could be helpful if you have multiple GPG keys. Or you can leave this blank.
     
     <br/>
     
-    You'll then need to confirm via `O` for `(O)kay` and you want to proceed. Next you'll need to enter a     passprhase and confirm that passphrase. Once this is complete the key will start generating and it can be     recommendated to improve entropy to move you mouse around or type on the keyboard.gpg
+    You'll then need to confirm via `O` for `(O)kay` and you want to proceed. Next you'll need to enter a passprhase and confirm that passphrase. Once this is complete the key will start generating and it can be     recommendated to improve entropy to move you mouse around or type on the keyboard.gpg
 
 ## **Fetching key information and importing into GitHub account:**
 
